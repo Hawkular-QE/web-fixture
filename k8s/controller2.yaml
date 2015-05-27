@@ -30,6 +30,6 @@ spec:
             - name: CRON_EXP
               value: "* * * * *"
             - name: DURATION
-              value: 10s
+              value: 50s
           ports:
             - containerPort: 8080
