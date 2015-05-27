@@ -1,0 +1,14 @@
+apiVersion: v1beta3
+kind: Service
+metadata:
+  labels:
+    name: webfixture2
+  name: webfixture2
+spec:
+  ports:
+    - port: 50002
+      targetPort: 8080
+  selector:
+    name: webfixture2
+  publicIPs:
+    - 172.18.17.27

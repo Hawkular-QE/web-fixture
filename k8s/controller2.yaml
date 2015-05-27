@@ -1,0 +1,35 @@
+# This web fixture mimics a web server that periodically goes offline
+# for a brief few seconds
+#
+apiVersion: v1beta3
+kind: ReplicationController
+metadata:
+  name: webfixture-controller2
+spec:
+  replicas: 1
+  # selector identifies the set of Pods that this
+  # replicaController is responsible for managing
+  selector:
+    name: webfixture2
+  # podTemplate defines the 'cookie cutter' used for creating
+  # new pods when necessary
+  template:
+    metadata:
+      labels:
+        # Important: these labels need to match the selector above
+        # The api server enforces this constraint.
+        name: webfixture2
+    spec:
+      containers:
+        - name: webfixture
+          image: hawkularqe/web-fixture:latest
+          resources:
+            limits:
+              cpu: 1
+          env:
+            - name: CRON_EXP
+              value: "* * * * *"
+            - name: DURATION
+              value: 10s
+          ports:
+            - containerPort: 8080
