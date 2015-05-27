@@ -3,6 +3,10 @@
 # launch web-fixture
 docker run -d -p 8999:8080 hawkularqe/web-fixture
 
+# get a simple index html page
+curl http://localhost:8999/
+--> <!DOCTYPE html><html><body><p>Pellentesque habitant morbi...
+
 # get custom http code
 curl -I http://localhost:8999/http?return=503
 --> HTTP/1.1 503 Service Temporarily Unavailable
