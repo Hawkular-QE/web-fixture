@@ -3,7 +3,7 @@
 NGINX="/usr/sbin/nginx -g 'daemon off;'"
 
 if [ "$CRON_EXP" == "*" ]; then
-  $NGINX
+  eval ${NGINX}
 else
   LOG="/var/log/cron.log"
   touch $LOG
